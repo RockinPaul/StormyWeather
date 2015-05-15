@@ -10,7 +10,10 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *citiesById;
+@property (nonatomic, strong) NSArray *cities;
+@property (nonatomic, strong) NSArray *ids;
 
 @end
 
