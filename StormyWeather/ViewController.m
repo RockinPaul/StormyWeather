@@ -20,7 +20,6 @@
     // Set the tableView
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -33,12 +32,6 @@
    
     NSLog(@"Hey Ho, let's go!");
     
-    [self.view addSubview:self.tableView];
-    [self.tableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-
     [self.tableView reloadData];
 }
 
@@ -46,12 +39,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    if(cell == nil) {
+
+    if (cell == nil) {
+        NSLog(@"Hey Ho, let's go!");
+
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    cell.textLabel.text = [self.cities[indexPath.row] title];
+    cell.textLabel.text = self.cities[indexPath.row];
     cell.detailTextLabel.text = @"Temperature";
     
     return cell;
