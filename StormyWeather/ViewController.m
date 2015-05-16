@@ -26,9 +26,9 @@
     NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
     self.ids = [json valueForKey:@"_id"];
-    self.cities = [json valueForKey:@"name"];
+    self.locations = [json valueForKey:@"name"];
     
-    self.citiesById = [NSDictionary dictionaryWithObjects:self.cities forKeys:self.ids];
+    self.citiesById = [NSDictionary dictionaryWithObjects:self.locations forKeys:self.ids];
    
     NSLog(@"Hey Ho, let's go!");
     
@@ -46,7 +46,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    cell.textLabel.text = self.cities[indexPath.row];
+    cell.textLabel.text = self.locations[indexPath.row];
     cell.detailTextLabel.text = @"Temperature";
     
     return cell;
@@ -58,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.cities count]; // number of cities in user menu
+    return [self.locations count]; // number of cities in user menu
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

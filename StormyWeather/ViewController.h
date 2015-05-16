@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *citiesById;
-@property (nonatomic, strong) NSArray *cities;
+@property (nonatomic, strong) NSArray *locations;
 @property (nonatomic, strong) NSArray *ids;
 
 @end
