@@ -23,52 +23,47 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
+//    NSData *data = [NSData dataWithContentsOfFile:filePath];
+//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//    
+//    self.ids = [json valueForKey:@"_id"];
+//    self.locations = [json valueForKey:@"name"];
+//    self.countries = [json valueForKey:@"country"];
     
-    self.ids = [json valueForKey:@"_id"];
-    self.locations = [json valueForKey:@"name"];
-    self.countries = [json valueForKey:@"country"];
     
-    City *city;
+    // Some of hardcode
+    NSString *name = @"Saint Petersburg";
+    NSString *country = @"RU";
     
     // Existing in DB
     if ([crud hasEntriesForEntityName:@"Cities"]) {
         // TODO: process cities from DB
     } else {
         NSLog(@"NO ENTRIES");
-        for (int i = 0; i < [self.ids count]; i++) {
-            if ([self.locations[i] isEqualToString:@"Saint Petersburg"]) {
-                if ([self.countries[i] isEqualToString:@"RU"]) {
-                    city = [[City alloc] initWithName:self.locations[i] id:self.ids[i] andCountry:self.countries[i]];
-                }
-            }
-        }
+//        [self setCityWith:country andName:name];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(cityWasInit)
+                                                     name:@"city_init_is_finished"
+                                                   object:nil];
     }
-
-    // Set default cities
-//    NSArray *values = [@"Moscow", @"Saint-Petersburg"];
-    
-   
-    NSLog(@"Hey Ho, let's go!");
     
     [self.tableView reloadData];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    City *city = self.tableData[indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     if (cell == nil) {
-        NSLog(@"Hey Ho, let's go!");
-
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    cell.textLabel.text = self.locations[indexPath.row];
-    cell.detailTextLabel.text = @"Temperature";
+    cell.textLabel.text = city.name;
+    cell.detailTextLabel.text = city.temp;
     
     return cell;
 }
@@ -79,7 +74,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.locations count]; // number of cities in user menu
+    return [self.tableData count]; // number of cities in user menu
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -104,9 +99,26 @@
     }
 }
 
+- (void)cityWasInit {
+    // TODO: process the city
+    NSLog(@"city was init");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//- (void)setCityWith:(NSString *)country andName:(NSString *)name {
+//    City *city;
+//    for (int i = 0; i < [self.ids count]; i++) {
+//        if ([self.locations[i] isEqualToString:name]) {
+//            if ([self.countries[i] isEqualToString:country]) {
+//                city = [[City alloc] initWithName:self.locations[i] id:self.ids[i] andCountry:self.countries[i]];
+//            }
+//        }
+//    }
+//}
+
 
 @end

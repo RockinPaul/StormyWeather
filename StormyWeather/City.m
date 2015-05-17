@@ -35,8 +35,10 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation
                                                , id responseObject) {
         NSLog(@"JSON: %@", responseObject);
+        NSLog(@"%@", [[responseObject valueForKey:@"main"] valueForKey:@"temp"]);
         
     // TODO: implement NSNotifications
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"city_init_is_finished" object:nil];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // Handle error
