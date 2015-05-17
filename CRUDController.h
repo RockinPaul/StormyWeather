@@ -19,7 +19,7 @@
 - (NSString *)getCityById;
 - (void) printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
 - (void) searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
-- (BOOL) coreDataHasEntriesForEntityName:(NSString *) entityName;
+- (BOOL)hasEntriesForEntityName:(NSString *) entityName;
 - (void) deleteAllObjectsFromEntity: (NSString *) entityName;
 
 + (CRUDController *) sharedInstance;

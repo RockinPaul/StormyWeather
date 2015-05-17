@@ -113,7 +113,7 @@
 }
 
 
-- (BOOL) coreDataHasEntriesForEntityName:(NSString *)entityName {
+- (BOOL)hasEntriesForEntityName:(NSString *)entityName {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -130,10 +130,8 @@
             abort();
         }
         if ([results count] == 0) {
-            NSLog(@"NO!");
             return NO;
         }
-        NSLog(@"Yeah!");
         return YES;
     }
     return NO;

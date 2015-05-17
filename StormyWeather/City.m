@@ -14,7 +14,7 @@
 // Base weather request URL
 NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
 
-- (id)initWithName:(NSString *)name {
+- (id)initWithName:(NSString *)name id:(NSString *)Id andCountry:(NSString *)country {
     
     CRUDController *crud = [CRUDController sharedInstance];
     
@@ -26,7 +26,7 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
     
 //    city.iD = [crud getIdByName]; // TODO: implement getIdByName method in CRUDController
     
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingString:city.iD]];
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingString:Id]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
@@ -42,6 +42,8 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
         // Handle error
         NSLog(@"Response error.");
     }];
+    
+    [operation start];
     
     return city;
 }

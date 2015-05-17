@@ -14,6 +14,8 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    CRUDController *crud = [CRUDController sharedInstance];
 
     // TODO: Refactoring this for init behaviour
     
@@ -29,6 +31,21 @@
     self.locations = [json valueForKey:@"name"];
     self.countries = [json valueForKey:@"country"];
     
+    City *city;
+    
+    // Existing in DB
+    if ([crud hasEntriesForEntityName:@"Cities"]) {
+        // TODO: process cities from DB
+    } else {
+        NSLog(@"NO ENTRIES");
+        for (int i = 0; i < [self.ids count]; i++) {
+            if ([self.locations[i] isEqualToString:@"Saint Petersburg"]) {
+                if ([self.countries[i] isEqualToString:@"RU"]) {
+                    city = [[City alloc] initWithName:self.locations[i] id:self.ids[i] andCountry:self.countries[i]];
+                }
+            }
+        }
+    }
 
     // Set default cities
 //    NSArray *values = [@"Moscow", @"Saint-Petersburg"];
