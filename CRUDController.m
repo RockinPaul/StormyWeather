@@ -7,19 +7,27 @@
 //
 
 #import "CRUDController.h"
+#import "City.h"
 
 @implementation CRUDController
 
-- (void) addCity {
+- (void)createCity:(City *)city {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Cities" inManagedObjectContext:context];
     NSManagedObject *newCity = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
     
-//    [newCity setValue:  forKey:@"exists"];
-//    [newCity setValue: stateVars.email forKey:@"email"];
-//    
+    [newCity setValue:city.iD forKey:@"id"];
+    [newCity setValue:city.name forKey:@"name"];
+    [newCity setValue:city.country forKey:@"country"];
+    [newCity setValue:city.descriptions forKey:@"descriptions"];
+    [newCity setValue:city.temp forKey:@"temp"];
+    [newCity setValue:city.tempMin forKey:@"tempMin"];
+    [newCity setValue:city.tempMax forKey:@"tempMax"];
+    [newCity setValue:city.pressure forKey:@"pressure"];
+    [newCity setValue:city.windSpeed forKey:@"windSpeed"];
+    
     NSError *error;
     [context save:&error];
     NSLog(@"User added to CoreData!");

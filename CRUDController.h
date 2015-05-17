@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
+#import "City.h"
 
 @interface CRUDController : NSObject
 
 @property (nonatomic, strong) CRUDController *crud;
 + (CRUDController *) sharedInstance;
 
-- (void) addCity;
+//- (void)createCity:(City *)city;
 - (NSString *)getCityId;
 - (NSString *)getCityById;
-- (void) printEntityContent: (NSString *) entityName forKey:(NSString *) keyName;
+- (void) printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
 - (void) searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
 - (BOOL) coreDataHasEntriesForEntityName:(NSString *) entityName;
 - (void) deleteAllObjectsFromEntity: (NSString *) entityName;

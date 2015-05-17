@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57C6BBDE8D23209A135B5392 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB561C0AC5AD3A9B914DE060 /* libPods.a */; };
 		E9CCB4E51B052F3400A3452E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB4E41B052F3400A3452E /* main.m */; };
 		E9CCB4E81B052F3400A3452E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB4E71B052F3400A3452E /* AppDelegate.m */; };
 		E9CCB4EB1B052F3500A3452E /* StormyWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB4E91B052F3500A3452E /* StormyWeather.xcdatamodeld */; };
@@ -17,6 +18,7 @@
 		E9CCB5021B052F3500A3452E /* StormyWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB5011B052F3500A3452E /* StormyWeatherTests.m */; };
 		E9CCB5101B054DE200A3452E /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = E9CCB50F1B054DE200A3452E /* cities.json */; };
 		E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB5121B0679A000A3452E /* CRUDController.m */; };
+		E9CCB5161B08530C00A3452E /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB5151B08530C00A3452E /* City.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AB88AA641B9B1BBA4D65758 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4B21FF685761E270226DCCE3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E9CCB4DF1B052F3400A3452E /* StormyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StormyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9CCB4E31B052F3400A3452E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9CCB4E41B052F3400A3452E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +51,9 @@
 		E9CCB50F1B054DE200A3452E /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cities.json; path = ../cities.json; sourceTree = "<group>"; };
 		E9CCB5111B0679A000A3452E /* CRUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRUDController.h; path = ../CRUDController.h; sourceTree = "<group>"; };
 		E9CCB5121B0679A000A3452E /* CRUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRUDController.m; path = ../CRUDController.m; sourceTree = "<group>"; };
+		E9CCB5141B08530C00A3452E /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		E9CCB5151B08530C00A3452E /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		EB561C0AC5AD3A9B914DE060 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C6BBDE8D23209A135B5392 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,12 +75,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2619A8FFD9B7589F74CB7D09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB561C0AC5AD3A9B914DE060 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C84D033776A16BAF6A16B794 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AB88AA641B9B1BBA4D65758 /* Pods.debug.xcconfig */,
+				4B21FF685761E270226DCCE3 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E9CCB4D61B052F3400A3452E = {
 			isa = PBXGroup;
 			children = (
 				E9CCB4E11B052F3400A3452E /* StormyWeather */,
 				E9CCB4FE1B052F3500A3452E /* StormyWeatherTests */,
 				E9CCB4E01B052F3400A3452E /* Products */,
+				C84D033776A16BAF6A16B794 /* Pods */,
+				2619A8FFD9B7589F74CB7D09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +118,8 @@
 				E9CCB50F1B054DE200A3452E /* cities.json */,
 				E9CCB4E61B052F3400A3452E /* AppDelegate.h */,
 				E9CCB4E71B052F3400A3452E /* AppDelegate.m */,
+				E9CCB5141B08530C00A3452E /* City.h */,
+				E9CCB5151B08530C00A3452E /* City.m */,
 				E9CCB4EC1B052F3500A3452E /* ViewController.h */,
 				E9CCB4ED1B052F3500A3452E /* ViewController.m */,
 				E9CCB5111B0679A000A3452E /* CRUDController.h */,
@@ -137,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9CCB5051B052F3500A3452E /* Build configuration list for PBXNativeTarget "StormyWeather" */;
 			buildPhases = (
+				E0E892B0851CD4D937D1F3CD /* Check Pods Manifest.lock */,
 				E9CCB4DB1B052F3400A3452E /* Sources */,
 				E9CCB4DC1B052F3400A3452E /* Frameworks */,
 				E9CCB4DD1B052F3400A3452E /* Resources */,
+				3364955DEE2612C390B6BE37 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,16 +257,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3364955DEE2612C390B6BE37 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0E892B0851CD4D937D1F3CD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9CCB4DB1B052F3400A3452E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9CCB4E81B052F3400A3452E /* AppDelegate.m in Sources */,
-				E9CCB4EB1B052F3500A3452E /* StormyWeather.xcdatamodeld in Sources */,
-				E9CCB4EE1B052F3500A3452E /* ViewController.m in Sources */,
-				E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */,
 				E9CCB4E51B052F3400A3452E /* main.m in Sources */,
+				E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */,
+				E9CCB4E81B052F3400A3452E /* AppDelegate.m in Sources */,
+				E9CCB4EE1B052F3500A3452E /* ViewController.m in Sources */,
+				E9CCB5161B08530C00A3452E /* City.m in Sources */,
+				E9CCB4EB1B052F3500A3452E /* StormyWeather.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +422,7 @@
 		};
 		E9CCB5061B052F3500A3452E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AB88AA641B9B1BBA4D65758 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StormyWeather/Info.plist;
@@ -367,6 +433,7 @@
 		};
 		E9CCB5071B052F3500A3452E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B21FF685761E270226DCCE3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StormyWeather/Info.plist;
@@ -428,6 +495,7 @@
 				E9CCB5071B052F3500A3452E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9CCB5081B052F3500A3452E /* Build configuration list for PBXNativeTarget "StormyWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +504,7 @@
 				E9CCB50A1B052F3500A3452E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
