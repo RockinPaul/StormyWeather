@@ -296,10 +296,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9CCB4E51B052F3400A3452E /* main.m in Sources */,
+				E9CCB5161B08530C00A3452E /* City.m in Sources */,
 				E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */,
 				E9CCB4E81B052F3400A3452E /* AppDelegate.m in Sources */,
 				E9CCB4EE1B052F3500A3452E /* ViewController.m in Sources */,
-				E9CCB5161B08530C00A3452E /* City.m in Sources */,
 				E9CCB4EB1B052F3500A3452E /* StormyWeather.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

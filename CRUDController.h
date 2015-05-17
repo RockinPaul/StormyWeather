@@ -13,14 +13,15 @@
 @interface CRUDController : NSObject
 
 @property (nonatomic, strong) CRUDController *crud;
-+ (CRUDController *) sharedInstance;
 
-//- (void)createCity:(City *)city;
+- (void)createCity:(City *)city;
 - (NSString *)getCityId;
 - (NSString *)getCityById;
 - (void) printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
 - (void) searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
 - (BOOL) coreDataHasEntriesForEntityName:(NSString *) entityName;
 - (void) deleteAllObjectsFromEntity: (NSString *) entityName;
+
++ (CRUDController *) sharedInstance;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "City.h"
+#import "CRUDController.h"
 
 @implementation City
 

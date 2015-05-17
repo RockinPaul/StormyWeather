@@ -17,7 +17,7 @@
     NSManagedObjectContext *context = [delegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Cities" inManagedObjectContext:context];
     NSManagedObject *newCity = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
-    
+
     [newCity setValue:city.iD forKey:@"id"];
     [newCity setValue:city.name forKey:@"name"];
     [newCity setValue:city.country forKey:@"country"];

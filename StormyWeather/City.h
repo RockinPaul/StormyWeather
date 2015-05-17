@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
-#import "CRUDController.h"
 
 @interface City : NSObject
 
