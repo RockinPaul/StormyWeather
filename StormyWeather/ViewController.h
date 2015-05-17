@@ -11,9 +11,9 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSDictionary *citiesById;
 @property (nonatomic, strong) NSArray *locations;
 @property (nonatomic, strong) NSArray *ids;
+@property (nonatomic, strong) NSArray *countries;
 
 @end
 

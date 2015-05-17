@@ -27,8 +27,12 @@
     
     self.ids = [json valueForKey:@"_id"];
     self.locations = [json valueForKey:@"name"];
+    self.countries = [json valueForKey:@"country"];
     
-    self.citiesById = [NSDictionary dictionaryWithObjects:self.locations forKeys:self.ids];
+
+    // Set default cities
+//    NSArray *values = [@"Moscow", @"Saint-Petersburg"];
+    
    
     NSLog(@"Hey Ho, let's go!");
     
