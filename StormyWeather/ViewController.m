@@ -18,12 +18,6 @@
     UIBarButtonItem *addCityButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addCityButtonClicked:)];
     self.navigationItem.rightBarButtonItem = addCityButton;
     
-    CRUDController *crud = [CRUDController sharedInstance];
-    
-//    NSArray *idArray = @[@"524901", @"498817"];
-//    City *city = [[City alloc] init];
-//    self.cities = [city getDataForCities:idArray];
-    
     // Set the tableView
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -35,13 +29,29 @@
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     // Existing in DB
+    CRUDController *crud = [CRUDController sharedInstance];
+    
     if ([crud hasEntriesForEntityName:@"Cities"]) {
         // TODO: process cities from DB
         self.cities = [crud getAllCities];
-
+        
     } else {
         NSLog(@"NO ENTRIES");
+        NSArray *idArray = @[@"524901", @"498817"];
+        City *city = [[City alloc] init];
+        self.cities = [city getDataForCities:idArray];
+        
+//        [crud createCity:self.cities[0]];
+//        [crud createCity:self.cities[1]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(citiesWasInit)
+                                                     name:@"cities_data_retrieved"
+                                                   object:nil];
     }
     
     [self.tableView reloadData];
