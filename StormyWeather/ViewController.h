@@ -12,7 +12,7 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *tableData;
+@property (nonatomic, strong) NSMutableArray *cities;
 //
 //@property (nonatomic, strong) NSArray *locations;
 //@property (nonatomic, strong) NSArray *ids;

@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *pressure;
 @property (nonatomic, strong) NSString *windSpeed;
 
+- (id)getDataForCities:(NSArray *)citiesId;
 - (id)initWithName:(NSString *)name id:(NSString *)Id andCountry:(NSString *)country;
 
 @end
