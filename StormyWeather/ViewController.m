@@ -27,6 +27,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+    
 //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
 //    NSData *data = [NSData dataWithContentsOfFile:filePath];
 //    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -55,13 +62,18 @@
     City *city = self.cities[indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.layoutMargins = UIEdgeInsetsZero;
 
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
+    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 33, 80, 20)];
+    tempLabel.text = [NSString stringWithFormat:@"%@", city.temp];
+    
     cell.textLabel.text = city.name;
     cell.detailTextLabel.text = city.country;
+    [cell addSubview:tempLabel];
     
     return cell;
 }
