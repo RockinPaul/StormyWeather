@@ -13,9 +13,8 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 
-@property (nonatomic, strong) NSMutableArray *cities;
+@property (nonatomic, strong) NSArray *cities;
 
 - (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem;
 

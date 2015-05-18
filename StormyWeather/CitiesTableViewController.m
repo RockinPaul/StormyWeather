@@ -17,10 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.clearsSelectionOnViewWillAppear = NO;
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -31,7 +28,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.city = [[City alloc] initWithName:self.locations[indexPath.row]
+                                         id:self.ids[indexPath.row]
+                                andCountry:self.countries[indexPath.row]];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cityWasInit)
+                                                 name:@"city_init_is_finished"
+                                               object:nil];
+}
+
+- (void)cityWasInit {
+    CRUDController *crud = [CRUDController sharedInstance];
+    [crud createCity:self.city];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"city_added" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

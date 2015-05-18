@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRUDController.h"
+#import "City.h"
 
 @interface CitiesTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *ids;
 @property (nonatomic, strong) NSArray *locations;
 @property (nonatomic, strong) NSArray *countries;
+@property (nonatomic, strong) City *city;
 
 @end

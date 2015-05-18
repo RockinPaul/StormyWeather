@@ -19,11 +19,10 @@
     self.navigationItem.rightBarButtonItem = addCityButton;
     
     CRUDController *crud = [CRUDController sharedInstance];
-    // TODO: try to load from database
     
-    NSArray *idArray = @[@"524901", @"498817"];
-    City *city = [[City alloc] init];
-    self.cities = [city getDataForCities:idArray];
+//    NSArray *idArray = @[@"524901", @"498817"];
+//    City *city = [[City alloc] init];
+//    self.cities = [city getDataForCities:idArray];
     
     // Set the tableView
     self.tableView.delegate = self;
@@ -39,12 +38,10 @@
     // Existing in DB
     if ([crud hasEntriesForEntityName:@"Cities"]) {
         // TODO: process cities from DB
+        self.cities = [crud getAllCities];
+
     } else {
         NSLog(@"NO ENTRIES");
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(citiesWasInit)
-                                                     name:@"cities_data_retrieved"
-                                                   object:nil];
     }
     
     [self.tableView reloadData];
@@ -54,7 +51,6 @@
     CitiesTableViewController *listController = [[CitiesTableViewController alloc] init];
     [self presentViewController:listController animated:YES completion:nil];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -74,9 +70,13 @@
     cell.detailTextLabel.text = city.country;
     [cell addSubview:tempLabel];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(citiesWasInit)
+                                                 name:@"city_added"
+                                               object:nil];
+    
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%ld", (long)indexPath.row); // TODO: modal adding-city window
@@ -95,10 +95,6 @@
 }
 
 - (void)citiesWasInit {
-    // TODO: process the city
-//    for (City *city in self.cities) {
-//        NSLog(@"%@ %@ %@", city.name, city.country, city.temp);
-//    }
     [self.tableView reloadData];
 }
 

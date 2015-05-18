@@ -15,13 +15,13 @@
 @property (nonatomic, strong) CRUDController *crud;
 
 - (void)createCity:(City *)city;
-- (NSString *)getCityId;
-- (NSString *)getCityById;
-- (void) printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
-- (void) searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
-- (BOOL)hasEntriesForEntityName:(NSString *) entityName;
-- (void) deleteAllObjectsFromEntity: (NSString *) entityName;
+- (NSArray *)getAllCities;
 
-+ (CRUDController *) sharedInstance;
+- (void)printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
+- (void)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
+- (BOOL)hasEntriesForEntityName:(NSString *) entityName;
+- (void)deleteAllObjectsFromEntity: (NSString *) entityName;
+
++ (CRUDController *)sharedInstance;
 
 @end

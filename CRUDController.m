@@ -7,7 +7,6 @@
 //
 
 #import "CRUDController.h"
-#import "City.h"
 
 @implementation CRUDController
 
@@ -21,29 +20,24 @@
     [newCity setValue:city.iD forKey:@"id"];
     [newCity setValue:city.name forKey:@"name"];
     [newCity setValue:city.country forKey:@"country"];
-    [newCity setValue:city.descriptions forKey:@"descriptions"];
     [newCity setValue:city.temp forKey:@"temp"];
     [newCity setValue:city.tempMin forKey:@"tempMin"];
     [newCity setValue:city.tempMax forKey:@"tempMax"];
     [newCity setValue:city.pressure forKey:@"pressure"];
-    [newCity setValue:city.windSpeed forKey:@"windSpeed"];
     
     NSError *error;
     [context save:&error];
-    NSLog(@"User added to CoreData!");
+    NSLog(@"City added to CoreData!");
 }
 
-- (NSString *) getObjectId {
+- (NSArray *)getAllCities {
+    
+    NSMutableArray *cities = [[NSMutableArray alloc] init];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSString *objectId;
-    
     NSManagedObjectContext *context = [delegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"User"];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Cities" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Cities"];
     [request setEntity:entityDesc];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"objectId != nil"];
-    [request setPredicate:predicate];
     
     NSError *error = nil;
     NSArray *results = [context executeFetchRequest:request error:&error];
@@ -52,12 +46,21 @@
         NSLog(@"ERROR!");
     }
     else {
-        NSString *result = [results firstObject];
-        objectId = [result valueForKey:@"objectId"];
-        NSLog(@"%@", objectId);
+        City *city;
+        for (NSString *result in results) {
+            city = [[City alloc] init];
+            city.name = [result valueForKey:@"name"];
+            city.country = [result valueForKey:@"country"];
+            city.iD = [result valueForKey:@"id"];
+            city.temp = [result valueForKey:@"temp"];
+            city.tempMax = [result valueForKey:@"tempMax"];
+            city.tempMin = [result valueForKey:@"tempMin"];
+            city.pressure = [result valueForKey:@"pressure"];
+            
+            [cities addObject:city];
+        }
     }
-    
-    return objectId;
+    return cities;
 }
 
 - (void) printEntityContent: (NSString *) entityName forKey:(NSString *) keyName {
@@ -85,7 +88,7 @@
     }
 }
 
-- (void) searchItemFromEntity:(NSString *) entity ForName:(NSString *) name {
+- (void)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
@@ -111,7 +114,6 @@
         NSLog(@"%@", item);
     }
 }
-
 
 - (BOOL)hasEntriesForEntityName:(NSString *)entityName {
     
@@ -159,7 +161,7 @@
     NSLog(@"All enteries are deleted!");
 }
 
-+(CRUDController *) sharedInstance {
++ (CRUDController *)sharedInstance {
     static dispatch_once_t pred;
     static CRUDController *sharedInstance = nil;
     dispatch_once(&pred, ^{
