@@ -15,6 +15,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+    } else {
+        NSLog(@"There IS internet connection");
+    }
+    
     UIBarButtonItem *addCityButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addCityButtonClicked:)];
     self.navigationItem.rightBarButtonItem = addCityButton;
     
@@ -68,7 +76,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 28, 80, 20)];
+    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 28, 80, 20)];
     tempLabel.text = [NSString stringWithFormat:@"%@", city.temp];
     
     cell.textLabel.text = city.name;

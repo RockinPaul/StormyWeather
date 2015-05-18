@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CRUDController.h"
 #import "CitiesTableViewController.h"
+#import "Reachability.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
