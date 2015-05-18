@@ -40,9 +40,13 @@
 
 - (void)cityWasInit {
     CRUDController *crud = [CRUDController sharedInstance];
-    [crud createCity:self.city];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"city_added" object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([crud searchItemFromEntity:@"Cities" ForName:self.city.name]) {
+        NSLog(@"City already exists");
+    } else {
+        [crud createCity:self.city];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"city_added" object:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

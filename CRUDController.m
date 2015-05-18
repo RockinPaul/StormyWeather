@@ -88,7 +88,7 @@
     }
 }
 
-- (void)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name {
+- (BOOL)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
@@ -97,7 +97,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"objectId like %@", name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name like %@", name];
     [request setPredicate:predicate];
     
     NSError *error;
@@ -105,13 +105,9 @@
     
     if(matchingData.count <= 0) {
         NSLog(@"NO item found");
+        return NO;
     } else {
-        NSString *item;
-        
-        for (NSManagedObject *obj in matchingData) {
-            item = [obj valueForKey:@"objectId"];
-        }
-        NSLog(@"%@", item);
+        return YES;
     }
 }
 

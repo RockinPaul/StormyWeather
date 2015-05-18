@@ -60,7 +60,11 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
             NSLog(@"%@", city.name);
             [cities addObject:city];
             
-            [crud createCity:city];
+            if ([crud searchItemFromEntity:@"Cities" ForName:city.name]) {
+                NSLog(@"City already in DB");
+            } else {
+                [crud createCity:city];
+            }
         }
         
         // Notification to ViewController

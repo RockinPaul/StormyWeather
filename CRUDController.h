@@ -18,7 +18,7 @@
 - (NSArray *)getAllCities;
 
 - (void)printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
-- (void)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
+- (BOOL)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;
 - (BOOL)hasEntriesForEntityName:(NSString *) entityName;
 - (void)deleteAllObjectsFromEntity: (NSString *) entityName;
 

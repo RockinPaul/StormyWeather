@@ -32,29 +32,24 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    // Existing in DB
+
     CRUDController *crud = [CRUDController sharedInstance];
     
     if ([crud hasEntriesForEntityName:@"Cities"]) {
         // TODO: process cities from DB
         self.cities = [crud getAllCities];
-        
+        [self.tableView reloadData];
     } else {
         NSLog(@"NO ENTRIES");
         NSArray *idArray = @[@"524901", @"498817"];
         City *city = [[City alloc] init];
         self.cities = [city getDataForCities:idArray];
         
-//        [crud createCity:self.cities[0]];
-//        [crud createCity:self.cities[1]];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(citiesWasInit)
                                                      name:@"cities_data_retrieved"
                                                    object:nil];
     }
-    
-    [self.tableView reloadData];
 }
 
 - (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem {
@@ -73,7 +68,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 28, 80, 20)];
+    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(250, 28, 80, 20)];
     tempLabel.text = [NSString stringWithFormat:@"%@", city.temp];
     
     cell.textLabel.text = city.name;
