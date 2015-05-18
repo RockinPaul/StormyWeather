@@ -19,6 +19,7 @@
 		E9CCB5101B054DE200A3452E /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = E9CCB50F1B054DE200A3452E /* cities.json */; };
 		E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB5121B0679A000A3452E /* CRUDController.m */; };
 		E9CCB5161B08530C00A3452E /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB5151B08530C00A3452E /* City.m */; };
+		E9CCB51C1B09FCC200A3452E /* CitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB51B1B09FCC200A3452E /* CitiesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		E9CCB5121B0679A000A3452E /* CRUDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRUDController.m; path = ../CRUDController.m; sourceTree = "<group>"; };
 		E9CCB5141B08530C00A3452E /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		E9CCB5151B08530C00A3452E /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		E9CCB51A1B09FCC100A3452E /* CitiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesTableViewController.h; sourceTree = "<group>"; };
+		E9CCB51B1B09FCC200A3452E /* CitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesTableViewController.m; sourceTree = "<group>"; };
 		EB561C0AC5AD3A9B914DE060 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,8 @@
 				E9CCB5151B08530C00A3452E /* City.m */,
 				E9CCB4EC1B052F3500A3452E /* ViewController.h */,
 				E9CCB4ED1B052F3500A3452E /* ViewController.m */,
+				E9CCB51A1B09FCC100A3452E /* CitiesTableViewController.h */,
+				E9CCB51B1B09FCC200A3452E /* CitiesTableViewController.m */,
 				E9CCB5111B0679A000A3452E /* CRUDController.h */,
 				E9CCB5121B0679A000A3452E /* CRUDController.m */,
 				E9CCB4EF1B052F3500A3452E /* Main.storyboard */,
@@ -298,6 +303,7 @@
 				E9CCB4E51B052F3400A3452E /* main.m in Sources */,
 				E9CCB5161B08530C00A3452E /* City.m in Sources */,
 				E9CCB5131B0679A000A3452E /* CRUDController.m in Sources */,
+				E9CCB51C1B09FCC200A3452E /* CitiesTableViewController.m in Sources */,
 				E9CCB4E81B052F3400A3452E /* AppDelegate.m in Sources */,
 				E9CCB4EE1B052F3500A3452E /* ViewController.m in Sources */,
 				E9CCB4EB1B052F3500A3452E /* StormyWeather.xcdatamodeld in Sources */,

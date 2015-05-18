@@ -15,13 +15,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    UIBarButtonItem *addCityButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addCityButtonClicked:)];
+    self.navigationItem.rightBarButtonItem = addCityButton;
+    
     CRUDController *crud = [CRUDController sharedInstance];
+    // TODO: try to load from database
     
     NSArray *idArray = @[@"524901", @"498817"];
     City *city = [[City alloc] init];
     self.cities = [city getDataForCities:idArray];
-
-    // TODO: Refactoring this for init behaviour
     
     // Set the tableView
     self.tableView.delegate = self;
@@ -33,14 +35,6 @@
     if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
-    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"json"];
-//    NSData *data = [NSData dataWithContentsOfFile:filePath];
-//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//    =
-//    self.ids = [json valueForKey:@"_id"];
-//    self.locations = [json valueForKey:@"name"];
-//    self.countries = [json valueForKey:@"country"];
     
     // Existing in DB
     if ([crud hasEntriesForEntityName:@"Cities"]) {
@@ -56,6 +50,11 @@
     [self.tableView reloadData];
 }
 
+- (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem {
+    CitiesTableViewController *listController = [[CitiesTableViewController alloc] init];
+    [self presentViewController:listController animated:YES completion:nil];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -68,7 +67,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 33, 80, 20)];
+    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 28, 80, 20)];
     tempLabel.text = [NSString stringWithFormat:@"%@", city.temp];
     
     cell.textLabel.text = city.name;

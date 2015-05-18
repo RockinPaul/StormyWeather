@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "CRUDController.h"
+#import "CitiesTableViewController.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+
 @property (nonatomic, strong) NSMutableArray *cities;
-//
-//@property (nonatomic, strong) NSArray *locations;
-//@property (nonatomic, strong) NSArray *ids;
-//@property (nonatomic, strong) NSArray *countries;
+
+- (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem;
 
 @end
 
