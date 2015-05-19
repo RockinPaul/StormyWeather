@@ -49,8 +49,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-//    City *city = self.cities[indexPath.row];
     
     NSString *CellIdentifier = [NSString  stringWithFormat:@"Cell_%ld", (long)indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -59,14 +57,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    
-//    UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 28, 80, 20)];
-//    tempLabel.text = [NSString stringWithFormat:@"%@", city.temp];
-//    
-//    cell.textLabel.text = city.name;
-//    cell.detailTextLabel.text = city.country;
-//    [cell addSubview:tempLabel];
-    
+
     return cell;
 }
 
