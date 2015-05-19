@@ -63,7 +63,40 @@
     return cities;
 }
 
-- (void) printEntityContent: (NSString *) entityName forKey:(NSString *) keyName {
+- (City *)getCityById:(NSString *)iD {
+    
+    City *city;
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Cities" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id like %@", iD];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    if(results.count <= 0) {
+        NSLog(@"NO item found");
+    } else {
+        city = [[City alloc] init];
+        for (NSString *result in results) {
+            city.name = [result valueForKey:@"name"];
+            city.country = [result valueForKey:@"country"];
+            city.iD = [result valueForKey:@"id"];
+            city.temp = [result valueForKey:@"temp"];
+            city.tempMax = [result valueForKey:@"tempMax"];
+            city.tempMin = [result valueForKey:@"tempMin"];
+            city.pressure = [result valueForKey:@"pressure"];
+        }
+    }
+    return city;
+}
+
+- (void)printEntityContent: (NSString *) entityName forKey:(NSString *) keyName {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -135,7 +168,7 @@
     return NO;
 }
 
-- (void) deleteAllObjectsFromEntity: (NSString *) entityName {
+- (void)deleteAllObjectsFromEntity: (NSString *) entityName {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];

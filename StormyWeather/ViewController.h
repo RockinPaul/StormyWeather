@@ -10,6 +10,7 @@
 #import "CRUDController.h"
 #import "CitiesTableViewController.h"
 #import "Reachability.h"
+#import "TabBarController.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,6 +20,9 @@
 @property (nonatomic, strong) NSMutableArray *updates; // for responded updates
 
 - (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem;
+
++ (NSString *)passingId; // For sending between viewcontroller
++ (void)setPassingId:(NSString *)iD;
 
 @end
 

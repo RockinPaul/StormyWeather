@@ -10,6 +10,8 @@
 
 @implementation ViewController
 
+static NSString *passingId = nil;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -104,7 +106,18 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    City *city = self.cities[indexPath.row];
+    [ViewController setPassingId:city.iD];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    TabBarController *controller = (TabBarController*)[mainStoryboard
+                                                       instantiateViewControllerWithIdentifier: @"tabbar"];
+    [self presentViewController:controller animated:YES completion:nil];
+    
     NSLog(@"%ld", (long)indexPath.row); // TODO: modal adding-city window
 }
 
@@ -136,5 +149,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
++ (NSString *)passingId {
+    return passingId;
+}
+
++ (void)setPassingId:(NSString *)iD {
+    passingId = iD;
+}
+
 
 @end
