@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *cities;
+@property (nonatomic, strong) NSMutableArray *updates; // for responded updates
 
 - (void)addCityButtonClicked:(UIBarButtonItem *)barButtonItem;
 

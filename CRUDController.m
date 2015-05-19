@@ -71,7 +71,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:entityName];
     [request setEntity:entityDesc];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"objectId != nil"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
     [request setPredicate:predicate];
     
     NSError *error = nil;

@@ -35,8 +35,10 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
                                          initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation
                                                , id responseObject) {
+        
         NSMutableArray *nameArray = [[responseObject valueForKey:@"list"] valueForKey:@"name"];
         NSMutableArray *countryArray = [[[responseObject valueForKey:@"list"] valueForKey:@"sys"] valueForKey:@"country"];
         NSMutableArray *mainArray = [[responseObject valueForKey:@"list"] valueForKey:@"main"];
@@ -48,8 +50,10 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
         City *city;
         CRUDController *crud = [CRUDController sharedInstance];
         for (int i = 0; i < [nameArray count]; i++) {
+            
             city = [[City alloc] init];
             
+            city.iD = citiesId[i];
             city.name = [NSString stringWithFormat:@"%@", nameArray[i]];
             city.country = [NSString stringWithFormat:@"%@", countryArray[i]];
             city.temp = [NSString stringWithFormat:@"%@", tempArray[i]];
@@ -64,17 +68,17 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
                 NSLog(@"City already in DB");
             } else {
                 [crud createCity:city];
+                // Notification to ViewController
             }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"cities_data_retrieved" object:nil];
         }
-        
-        // Notification to ViewController
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"cities_data_retrieved" object:nil];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // Handle error
         NSLog(@"Response error.");
     }];
-    
+    NSLog(@"LOOP");
+
     [operation start];
     
     return cities;
