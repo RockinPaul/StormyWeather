@@ -13,7 +13,7 @@
 
 // Base weather request URL
 NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
-
+NSString *const WEEKLY_BaseURL = @"http://api.openweathermap.org/data/2.1/forecast/city/";
 
 - (NSString *)getURLforSeveralCities:(NSArray *)citiesId {
     
@@ -77,11 +77,40 @@ NSString *const BaseURL = @"http://api.openweathermap.org/data/2.5/weather?id=";
         // Handle error
         NSLog(@"Response error.");
     }];
-    NSLog(@"LOOP");
-
+    
     [operation start];
     
     return cities;
+}
+
+- (NSArray *)getWeeklyWeatherForCity:(NSString *)cityId {
+    
+    NSMutableArray *weather = [[NSMutableArray alloc] init]; // Array for weekly forecast
+    NSString *stringURL = [WEEKLY_BaseURL stringByAppendingString:cityId];
+    NSURL *url = [[NSURL alloc] initWithString:stringURL];
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    
+    NSLog(@"%@", request);
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
+                                         initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation
+                                               , id responseObject) {
+        
+        NSLog(@"%@", responseObject);
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"weekly_data_retrieved" object:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Handle error
+        NSLog(@"Response error. %ld", (long)[error code]);
+    }];
+    
+    [operation start];
+    
+    return weather;
 }
 
 - (id)initWithName:(NSString *)name id:(NSString *)Id andCountry:(NSString *)country {

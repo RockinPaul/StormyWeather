@@ -96,6 +96,33 @@
     return city;
 }
 
+- (void)updateCityWithId:(NSString *)iD ByCity:(City *)city {
+    
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Cities" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+
+    [request setEntity:entityDesc];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(id = %@)", iD];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    for (NSManagedObject *obj in results) {
+        
+        [obj setValue:city.temp forKey:@"temp"];
+        [obj setValue:city.tempMax forKey:@"tempMax"];
+        [obj setValue:city.tempMin forKey:@"tempMin"];
+        [obj setValue:city.pressure forKey:@"pressure"];
+        
+        [context save:&error];
+    }
+}
+
 - (void)printEntityContent: (NSString *) entityName forKey:(NSString *) keyName {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     

@@ -75,25 +75,6 @@
             </objects>
             <point key="canvasLocation" x="153.59999999999999" y="212.05333333333334"/>
         </scene>
-        <!--Week-->
-        <scene sceneID="Syk-yh-TxC">
-            <objects>
-                <viewController id="dA2-2N-Z5V" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zFs-uv-RBz"/>
-                        <viewControllerLayoutGuide type="bottom" id="c8p-4D-CEd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GgW-qT-Omb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Week" id="XtW-43-Tby"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KxK-3Y-tIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="980" y="504"/>
-        </scene>
         <!--Detail-->
         <scene sceneID="leB-M9-dAM">
             <objects>
@@ -136,7 +117,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pressure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apt-Ot-7aH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pressure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apt-Ot-7aH">
                                 <rect key="frame" x="101" y="318" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,6 +147,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IA-1V-xIV">
+                                <rect key="frame" x="143" y="414" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="GLP-HF-GYF" eventType="touchUpInside" id="f7I-jd-uKo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -195,12 +185,39 @@
                     </tabBar>
                     <connections>
                         <segue destination="GLP-HF-GYF" kind="relationship" relationship="viewControllers" id="odT-5m-XzW"/>
-                        <segue destination="dA2-2N-Z5V" kind="relationship" relationship="viewControllers" id="tXG-EY-ccX"/>
+                        <segue destination="GrQ-17-Ky8" kind="relationship" relationship="viewControllers" id="37O-YV-ZjF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifb-z2-G7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="540" y="212"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tca-5Z-dQ4">
+            <objects>
+                <tableViewController id="GrQ-17-Ky8" customClass="WeekTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kka-UC-Dzw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Uyh-D3-847">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uyh-D3-847" id="CEn-6Z-Zjg">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GrQ-17-Ky8" id="qEY-vl-DrM"/>
+                            <outlet property="delegate" destination="GrQ-17-Ky8" id="BVV-l5-9Bb"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="iWB-nF-wRr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cm-vT-fJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="494"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

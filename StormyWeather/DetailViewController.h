@@ -19,4 +19,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *tempMinLabel;
 @property (nonatomic, strong) IBOutlet UILabel *pressureLabel;
 
+- (IBAction)back:(UIButton *)sender;
+
 @end

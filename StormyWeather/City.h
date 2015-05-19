@@ -24,5 +24,6 @@
 
 - (id)getDataForCities:(NSArray *)citiesId;
 - (id)initWithName:(NSString *)name id:(NSString *)Id andCountry:(NSString *)country;
+- (NSArray *)getWeeklyWeatherForCity:(NSString *)cityId;
 
 @end

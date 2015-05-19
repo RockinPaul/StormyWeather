@@ -17,6 +17,7 @@
 - (void)createCity:(City *)city;
 - (NSArray *)getAllCities;
 - (City *)getCityById:(NSString *)iD;
+- (void)updateCityWithId:(NSString *)iD ByCity:(City *)city;
 
 - (void)printEntityContent:(NSString *) entityName forKey:(NSString *) keyName;
 - (BOOL)searchItemFromEntity:(NSString *) entity ForName:(NSString *) name;

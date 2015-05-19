@@ -56,8 +56,6 @@ static NSString *passingId = nil;
             NSLog(@"There IS NO internet connection");
         } else {
             for (City *tempCity in self.cities) {
-                NSLog(@"%@", tempCity.iD);
-                NSLog(@"%d", [self.cities count]);
                 [ids addObject:tempCity.iD];
             }
             NSLog(@"%lu", (unsigned long)[ids count]);
@@ -85,10 +83,9 @@ static NSString *passingId = nil;
     NSString *CellIdentifier = [NSString  stringWithFormat:@"Cell_%ld", (long)indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    cell.layoutMargins = UIEdgeInsetsZero;
-
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+        cell.layoutMargins = UIEdgeInsetsZero;
     }
     
     UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 28, 80, 20)];
@@ -138,10 +135,13 @@ static NSString *passingId = nil;
 }
 
 - (void)citiesUpdated {
-    NSLog(@"citiesWasInit");
+    
+    CRUDController *crud = [CRUDController sharedInstance];
     self.cities = [self.updates copy];
     
-    NSLog(@"%lu", (unsigned long)[self.cities count]);
+    for (City *city in self.cities) {
+        [crud updateCityWithId:city.iD ByCity:city];
+    }
     [self.tableView reloadData];
 }
 
